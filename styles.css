@@ -7,15 +7,15 @@ body {
 }
 
 body.easy {
-  background-color: green;
+  background-color: #a8d5ba;
 }
 
 body.medium {
-  background-color: yellow;
+  background-color: #faeba7;
 }
 
 body.hard {
-  background-color: red;
+  background-color: #ffa4a4;
 }
 
 #gameWrapper {

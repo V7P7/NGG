@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let secretNumber;
   let attempts = 0;
   let chances, hints, difficulty;
+  let score = 0;
 
   // Attach event listeners
   document.getElementById("restartButton").style.display = "none";
@@ -81,44 +82,44 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function checkGuess() {
-    if (chances <= 0) {
-      document.getElementById("feedback").textContent =
-        "Sorry, no chances left!";
-      return;
-    }
-
-    let userGuess = document.getElementById("userGuess").value;
+    let userGuess = parseInt(document.getElementById("userGuess").value);
     attempts++;
 
-    if (userGuess < secretNumber) {
-      chances--;
+    if (userGuess === secretNumber) {
+      score += chances * 10;
       document.getElementById(
         "feedback"
-      ).textContent = `Too low! You have ${chances} chances left.`;
-    } else if (userGuess > secretNumber) {
-      chances--;
-      document.getElementById(
-        "feedback"
-      ).textContent = `Too high! You have ${chances} chances left.`;
-    } else {
-      document.getElementById(
-        "feedback"
-      ).textContent = `You got it in ${attempts} tries!`;
+      ).textContent = `You got it right in ${attempts} attempts! Your score is: ${score}.`;
+
       document.getElementById("winAnimation").style.display = "block";
       setTimeout(function () {
         document.getElementById("winAnimation").style.display = "none";
       }, 2000);
-      document.getElementById("restartButton").style.display = "block";
-    }
 
-    if (chances == 0) {
-      document.getElementById("feedback").textContent =
-        "You've run out of chances!";
+      document.getElementById("restartButton").style.display = "block";
+    } else if (chances <= 1) {
+      document.getElementById(
+        "feedback"
+      ).textContent = `You've run out of chances! Your total score was: ${score}.`;
+
       document.getElementById("loseAnimation").style.display = "block";
       setTimeout(function () {
         document.getElementById("loseAnimation").style.display = "none";
       }, 2000);
+
       document.getElementById("restartButton").style.display = "block";
+    } else {
+      if (userGuess < secretNumber) {
+        chances--;
+        document.getElementById(
+          "feedback"
+        ).textContent = `Too low! ${chances} chances remaining. Score: ${score}`;
+      } else if (userGuess > secretNumber) {
+        chances--;
+        document.getElementById(
+          "feedback"
+        ).textContent = `Too high! ${chances} chances remaining. Score: ${score}`;
+      }
     }
   }
 
@@ -156,5 +157,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Clear the user guess input
     document.getElementById("userGuess").value = "";
+
+    document.getElementById(
+      "feedback"
+    ).textContent = `Your total score is: ${score}`;
   }
 });
