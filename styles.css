@@ -1,0 +1,112 @@
+body {
+  font-family: "Arial", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+body.easy {
+  background-color: green;
+}
+
+body.medium {
+  background-color: yellow;
+}
+
+body.hard {
+  background-color: red;
+}
+
+#gameWrapper {
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  width: 300px;
+  text-align: center;
+}
+
+#startScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Creates space between child elements */
+  justify-content: center;
+}
+
+#startScreen h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+}
+
+.difficulty-buttons {
+  display: flex; /* Line up the buttons side by side */
+  gap: 10px; /* Creates space between buttons */
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin: 0 10px; /* Horizontal spacing between the buttons */
+}
+
+button#confirmButton {
+  margin-top: 20px; /* Adds space above the button */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+p {
+  margin-top: 20px;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#gameScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#gameScreen #restartButton {
+  margin: 0px 100px;
+  margin-top: 20px;
+}
+
+.game-result {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 40px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  font-size: 1.5em;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
